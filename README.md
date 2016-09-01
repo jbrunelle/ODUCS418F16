@@ -38,13 +38,3 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 ```
-
-### Create, Maintain, and Destroy Sessions in PHP
-NOTE: Examples are from Mat Kelly's Spring 2015 CS418 offering!!
-
-A demo to serve as an example for how to deal with sessions in PHP to maintain a persistent user login. The scripts have been deployed at http://www.cs.odu.edu/~mkelly/semester/2015_spring/cs418/sessionsExample/ but should be portable enough to be run anywhere that can execute PHP scripts (e.g., your XAMPP installation). The [credentials previously provided](https://github.com/machawk1/ODUCS418/blob/spring2015/credentials.txt) can be used to log into the system.
-* [index.php](https://github.com/machawk1/ODUCS418/blob/spring2015/sessionsExample/index.php) - checks if a user is logged in. If so, lists questions. If not, redirects to login.php.
-* [login.php](https://github.com/machawk1/ODUCS418/blob/spring2015/sessionsExample/login.php) - provides an HTML form for interfacing with the credentials verification script (header.php).
-* [header.php](https://github.com/machawk1/ODUCS418/blob/spring2015/sessionsExample/header.php) - included in the login.php script (whose form targets itself) to check if post data has been supplied and check it against a pseudo-database in db.php
-* [db.php](https://github.com/machawk1/ODUCS418/blob/spring2015/sessionsExample/db.php) - a pseudo-database to replicate what would be done with MySQL queries but simply returns arrays.
-* [question.php](https://github.com/machawk1/ODUCS418/blob/spring2015/sessionsExample/question.php) - takes a HTTP GET parameter of id, which causes a "query" to the data in db.php and returns the appropriate content.
