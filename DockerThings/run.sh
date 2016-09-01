@@ -28,5 +28,7 @@ fi
 
 #ls -l /var/www/html/*
 
+echo "justin got here"
+
 exec supervisord -n
 

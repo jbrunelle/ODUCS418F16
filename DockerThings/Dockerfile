@@ -14,7 +14,6 @@ RUN sed -i 's/expose_php = On/expose_php = Off/g' /etc/php5/apache2/php.ini
 RUN sed -i 's/ServerTokens OS/ServerTokens Prod/g' /etc/apache2/conf-enabled/security.conf
 RUN sed -i 's/ServerSignature On/ServerSignature Off/g' /etc/apache2/conf-enabled/security.conf
 
-
 # Add image configuration and scripts
 ADD start-apache2.sh /start-apache2.sh
 ADD start-mysqld.sh /start-mysqld.sh
@@ -40,9 +39,6 @@ RUN a2enmod rewrite
 ADD . /app
 #RUN git clone https://github.com/fermayo/hello-world-lamp.git /app
 RUN mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html
-
-
-RUN echo "hi jbrunelle" > /var/www/html/index.html
 
 #Enviornment variables to configure php
 ENV PHP_UPLOAD_MAX_FILESIZE 10M
