@@ -34,15 +34,6 @@ Test the deployment:
 
 
 
-
-Running students' deployments
------------------------------------
-
-UNDER CONSTRUCTION!!!
-
-
-
-
 Connecting to the bundled MySQL server from within the container
 ----------------------------------------------------------------
 
