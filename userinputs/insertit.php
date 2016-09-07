@@ -22,7 +22,7 @@ $odu = trim($_GET["userOdu"]);
 $date = trim($_GET["userDate"]);
 
 if(!is_numeric($id)){
-	print "id " + $id + " is not a number!<br>";
+	print "key/id " + $id + " is not a number!<br>";
 }
 if(!is_numeric($vis)){
 	print "visitor score " + $vis + " is not a number!<br>";
@@ -31,7 +31,7 @@ if(!is_numeric($odu)){
 	print "odu score " + $odu + " is not a number!<br>";
 }
 
-$sql = "insert into oduScores values (" .  mysqli_real_escape_string($id) . ", '"
+$sql = "insert into oduScores values (" .  mysqli_real_escape_string($conn, $id) . ", '"
 	.  mysqli_real_escape_string($conn, $opp) . "', "
 	.  mysqli_real_escape_string($conn, $vis) . ", "
 	.  mysqli_real_escape_string($conn, $odu) . ", '"
