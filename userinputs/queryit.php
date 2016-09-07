@@ -15,9 +15,9 @@ if ($conn->connect_error) {
 
 /**/
 
-$sql = "select * from oduScores where " . ($_GET["query"]) . ";";
+$sql = "select * from oduScores where opponent = '" . ($_GET["query"]) . "';";
 
-print "running: $sql"
+print "running: $sql";
 
 
 $result = $conn->query($sql);
