@@ -20,6 +20,7 @@ $opp = trim($_GET["userOpp"]);
 $vis = trim($_GET["userVis"]);
 $odu = trim($_GET["userOdu"]);
 $date = trim($_GET["userDate"]);
+
 if(!is_numeric($id)){
 	print "id " + $id + " is not a number!<br>";
 }
@@ -30,11 +31,11 @@ if(!is_numeric($odu)){
 	print "odu score " + $odu + " is not a number!<br>";
 }
 
-$sql = "insert into oduScores values (" .  mysqli_real_escape_string($id) . ", '"
-	.  mysqli_real_escape_string($opp) . "', "
-	.  mysqli_real_escape_string($vis) . ", "
-	.  mysqli_real_escape_string($odu) . ", '"
-	.  mysqli_real_escape_string($date) .  "');";
+$sql = "insert into oduScores values (" .  mysql_real_escape_string($id) . ", '"
+	.  mysql_real_escape_string($opp) . "', "
+	.  mysql_real_escape_string($vis) . ", "
+	.  mysql_real_escape_string($odu) . ", '"
+	.  mysql_real_escape_string($date) .  "');";
 
 print "insert query: $sql<br><br>";
 
@@ -51,12 +52,12 @@ if ($result->num_rows > 0) {
     echo "<tr><th>ID<th>opponent<th>visitor points<th>odu points<th>date\n";
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<td>" . $row["id"] . "<td>" . $row["opponent"] . "<td>" . $row["visitorPoints"] . "<td>" . $row["oduPoints"] . "<td>" . $row["notes"] . "\n";
+        echo "<tr><td>" . $row["id"] . "<td>" . $row["opponent"] . "<td>" . $row["visitorPoints"] . "<td>" . $row["oduPoints"] . "<td>" . $row["notes"] . "\n";
     }
 } else {
     echo "0 results";
 }
 $conn->close();
 /**/
-echo "</body></html>";
+echo "</table></body></html>";
 ?>
