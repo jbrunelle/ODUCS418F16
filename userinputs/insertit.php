@@ -31,11 +31,11 @@ if(!is_numeric($odu)){
 	print "odu score " + $odu + " is not a number!<br>";
 }
 
-$sql = "insert into oduScores values (" .  mysql_real_escape_string($id) . ", '"
-	.  mysql_real_escape_string($opp) . "', "
-	.  mysql_real_escape_string($vis) . ", "
-	.  mysql_real_escape_string($odu) . ", '"
-	.  mysql_real_escape_string($date) .  "');";
+$sql = "insert into oduScores values (" .  mysqli_real_escape_string($id) . ", '"
+	.  mysqli_real_escape_string($conn, $opp) . "', "
+	.  mysqli_real_escape_string($conn, $vis) . ", "
+	.  mysqli_real_escape_string($conn, $odu) . ", '"
+	.  mysqli_real_escape_string($conn, $date) .  "');";
 
 print "insert query: $sql<br><br>";
 
