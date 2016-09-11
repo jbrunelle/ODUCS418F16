@@ -1,60 +1,37 @@
-tutum-docker-lamp
+Fall 2016 CS518 Docker file
 =================
 
-Out-of-the-box LAMP image (PHP+MySQL)
+Modified from tutum/lamp, the "Out-of-the-box LAMP image (PHP+MySQL)"
+Designed for use on the docker deployment server for ODU's CS518 
+in Fall 2016 (http://www.cs.odu.edu/~jbrunelle/cs518)
 
 
 Usage
 -----
 
-To create the image `tutum/lamp`, execute the following command on the tutum-docker-lamp folder:
+To create a docker image (e.g., jbrunelle/oducs518f16), execute the following command on the directory containing the Dockerfile:
 
-	docker build -t tutum/lamp .
-
-You can now push your new image to the registry:
-
-	docker push tutum/lamp
+	docker build -t jbrunelle/oducs518f16 .
 
 
-Running your LAMP docker image
+
+Running your docker image
 ------------------------------
 
-Start your image binding the external ports 80 and 3306 in all interfaces to your container:
+Start a tutum/lamp image binding the external ports 80 and 3306 in all interfaces to your container:
 
 	docker run -d -p 80:80 -p 3306:3306 tutum/lamp
 
-Test your deployment:
+However, our needs are much more specific. To run the dockerserver at cs518.cs.odu.edu, we run the following command: 
 
-	curl http://localhost/
+        docker run --network nginx-proxy -e VIRTUAL_HOST=cs518.cs.odu.edu -v /home/jbrunelle/cs518_jfb/deploymentFiles:/var/www/html jbrunelle/oducs518f16
 
-Hello world!
+In this example, the files that control the docker test and deployment system are contained at /home/jbrunelle/cs518_jfb/deploymentFiles and deployed at the docker image's /var/www/html.
 
+Test the deployment:
 
-Loading your custom PHP application
------------------------------------
+	curl -i http://cs518.cs.odu.edu/
 
-In order to replace the "Hello World" application that comes bundled with this docker image,
-create a new `Dockerfile` in an empty folder with the following contents:
-
-	FROM tutum/lamp:latest
-	RUN rm -fr /app && git clone https://github.com/username/customapp.git /app
-	EXPOSE 80 3306
-	CMD ["/run.sh"]
-
-replacing `https://github.com/username/customapp.git` with your application's GIT repository.
-After that, build the new `Dockerfile`:
-
-	docker build -t username/my-lamp-app .
-
-And test it:
-
-	docker run -d -p 80:80 -p 3306:3306 username/my-lamp-app
-
-Test your deployment:
-
-	curl http://localhost/
-
-That's it!
 
 
 Connecting to the bundled MySQL server from within the container
@@ -122,4 +99,4 @@ Disabling .htaccess
     RUN a2enmod rewrite
 
 
-**by http://www.tutum.co**
+**by @jbrunelle, modified from http://www.tutum.co**
