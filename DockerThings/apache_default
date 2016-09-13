@@ -4,19 +4,19 @@
         DocumentRoot /var/www/html
         <Directory />
                 Options FollowSymLinks
-                AllowOverride None
+                AllowOverride All
         </Directory>
         <Directory /var/www/html>
                 Options Indexes FollowSymLinks MultiViews
                 # To make wordpress .htaccess work
-                AllowOverride FileInfo
+                AllowOverride All
                 Order allow,deny
                 allow from all
         </Directory>
 
         ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
         <Directory "/usr/lib/cgi-bin">
-                AllowOverride None
+                AllowOverride All
                 Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
                 Order allow,deny
                 Allow from all
