@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>JavaScript Scope Example</title>
+
+<script type="text/javascript">
+
+window.onerror = function ( message )
+{
+	document.getElementById("error").innerHTML = "New error: " + message;
+}
+
+var myGlobal = "TheGlobal";
+
+/**/
+function function1()
+{
+	var theText = "function 1 ran";
+	document.getElementById("div1").innerHTML = theText;
+
+	theText = theText + " + myGlobal = " + myGlobal + "<br><br>";
+	document.getElementById("div1").innerHTML = theText;
+
+	function innerFunc(){
+		var subfunction = "this is from the function 1.1";
+		document.getElementById("div1").innerHTML = document.getElementById("div1").innerHTML + 
+				("inside the sub-function, theText=" + theText + "<br> and here is the new variable=" + subfunction + "<br><br>"); 
+	}
+
+	innerFunc();
+
+	document.getElementById("div1").innerHTML = document.getElementById("div1").innerHTML + 
+					"and other text from oustide: <br>" + subfunction;
+	
+}
+
+myGlobal="NewGlobal";
+
+function function2()
+{
+	document.getElementById("div2").innerHTML = "function 2 ran!";
+
+	argumentsFunction("justin is", "the best");
+}
+
+function argumentsFunction()
+{
+	console.log(arguments);
+}
+
+
+function function3()
+{
+	document.getElementById("div3").innerHTML = "function 3 ran!";
+	console.log(try1());
+	console.log(try2());
+	console.log(try3());
+	console.log(try4());
+	console.log(try5());
+}
+/**/
+
+function try1()
+{
+	return "foo";
+}
+function try2()
+{
+	return 
+		"foo";
+}
+function try3()
+{
+	return 
+		[1, 2, 3];
+}
+function try4()
+{
+	return [1, 2, 3];
+}
+
+function try5()
+{
+	return [1,
+		2, 3];
+}
+
+
+</script>
+
+</head>
+
+<body>
+
+<table padding='10' border='1'>
+
+<tr><th>Button<th>Output
+<tr>
+<td>
+<input type="submit" onclick="function1()">
+<td>
+<div id="div1">Output of function1</div>
+
+
+<tr>
+<td>
+<input type="submit" id="click2" onclick="function2()">
+<td>
+<div id="div2">Output of function2</div>
+
+
+<tr>
+<td>
+<input type="submit" onclick="function3()">
+<td>
+<div id="div3">Output of function3</div>
+
+
+
+</table>
+
+<br><br>
+<div id="error">Errors show up here!</div>
+
+</body>
+</html>

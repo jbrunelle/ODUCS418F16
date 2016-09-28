@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>JavaScript Scope Example</title>
+
+<script type="text/javascript">
+
+window.onerror = function ( message )
+{
+	document.getElementById("error").innerHTML = "New error: " + message;
+}
+
+var myGlobal = "TheGlobal";
+
+</script>
+
+</head>
+
+<body>
+
+<table padding='10' border='1'>
+
+<tr><th>Code<th>Output
+<tr>
+<td>
+window.myVariable = myGlobal;
+<td>
+<script type="text/javascript">
+window.myVariable = myGlobal;
+document.write("<p>" + window.myVariable + "</p>");
+</script>
+
+<tr>
+<td>
+var myVariable1 = myGlobal;
+<td>
+<script type="text/javascript">
+var myVariable1 = myGlobal;
+document.write("<p>" + myVariable1 + "</p>");
+</script>
+
+
+<tr>
+<td>
+myVariable2 = myGlobal;
+<td>
+<script type="text/javascript">
+myVariable2 = myGlobal;
+document.write("<p>" + myVariable2 + "</p>");
+</script>
+
+
+
+
+
+</table>
+
+<br><br>
+<div id="error">Errors show up here!</div>
+
+</body>
+</html>
