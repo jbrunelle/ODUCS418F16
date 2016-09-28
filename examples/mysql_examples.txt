@@ -1,0 +1,16 @@
+examples:
+
+login: 		mysql -u root -p
+create DB: 	create database mysqltest;
+change DB:	use mysqltest
+create table:
+		CREATE TABLE oduScores (
+		id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		opponent VARCHAR(30) NOT NULL,
+		visitorPoints INTEGER NOT NULL,
+		oduPoints INTEGER NOT NULL,
+		notes TIMESTAMP
+		);
+describe: 	desc oduScores;
+insert:		insert into oduScores values (1, "Hampton", 13, 38, (select now()));
+select:		select * from oduScores;
